@@ -7,3 +7,5 @@ RUN \
         ca-certificates \
         curl \
         make
+
+ENTRYPOINT ["/bin/sh"]
