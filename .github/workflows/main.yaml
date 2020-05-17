@@ -1,0 +1,14 @@
+name: Build and Publish to DockerHub
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Publish to Docker Repository
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          dockerfile: image/richgo/Dockerfile
+          name: pawzio/richgo:1.14.3-alpine3.11
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
