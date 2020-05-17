@@ -1,0 +1,6 @@
+---
+engines:
+  hadolint:
+    enabled: true
+  remarklint:
+    enabled: true
