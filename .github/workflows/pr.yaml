@@ -1,0 +1,12 @@
+name: Build and Publish to DockerHub
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  richgo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: docker build -t pawzio/richgo:1.14.3-alpine3.11 image/richgo/.
