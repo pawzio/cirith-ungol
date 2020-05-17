@@ -8,5 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build image
+      - name: Build
         run: docker build -t pawzio/richgo:1.14.3-alpine3.11 image/richgo/.
+  compose-make:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: docker build -t pawzio/compose-make:debian-1.25.5 image/compose-make/.

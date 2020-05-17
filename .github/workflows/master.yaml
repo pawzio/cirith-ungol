@@ -15,3 +15,14 @@ jobs:
           name: pawzio/richgo:1.14.3-alpine3.11
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+  compose-make:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Publish to Docker Repository
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          dockerfile: image/compose-make/Dockerfile
+          name: pawzio/compose-make:debian-1.25.5
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
