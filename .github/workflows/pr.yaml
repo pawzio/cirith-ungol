@@ -8,17 +8,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build
-        run: docker build -t pawzio/richgo:1.14.3-alpine3.11 image/richgo/.
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: pawzio/richgo
+          tags: 1.14.3-alpine3.11
+          path: image/richgo/.
+          push: false
   compose-make:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build
-        run: docker build -t pawzio/compose-make:debian-1.25.5 image/compose-make/.
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: pawzio/compose-make
+          tags: debian-1.25.5
+          path: image/compose-make/.
+          push: false
   godacy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build
-        run: docker build -t pawzio/godacy:1.14.3-alpine3.11 image/godacy/.
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: pawzio/godacy
+          tags: 1.14.3-alpine3.11
+          path: image/godacy/.
+          push: false
