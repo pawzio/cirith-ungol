@@ -8,32 +8,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Publish to Docker Repository
-        uses: elgohr/Publish-Docker-Github-Action@master
+      - uses: docker/build-push-action@v1
         with:
-          dockerfile: image/richgo/Dockerfile
-          name: pawzio/richgo:1.14.3-alpine3.11
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: pawzio/richgo
+          tags: 1.14.3-alpine3.11
+          path: image/richgo/.
   compose-make:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Publish to Docker Repository
-        uses: elgohr/Publish-Docker-Github-Action@master
+      - uses: docker/build-push-action@v1
         with:
-          dockerfile: image/compose-make/Dockerfile
-          name: pawzio/compose-make:debian-1.25.5
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: pawzio/compose-make
+          tags: debian-1.25.5
+          path: image/compose-make/.
   godacy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Publish to Docker Repository
-        uses: elgohr/Publish-Docker-Github-Action@master
+      - uses: docker/build-push-action@v1
         with:
-          dockerfile: image/godacy/Dockerfile
-          name: pawzio/godacy:1.14.3-alpine3.11
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: pawzio/godacy
+          tags: 1.14.3-alpine3.11
+          path: image/godacy/.
